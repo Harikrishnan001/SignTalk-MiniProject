@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:camera/camera.dart';
-import '/screens/dashboard_screen.dart';
+import '/screens/dashboardscreen/dashboard_screen.dart';
 import '/global/variables.dart';
 
 Future<void> main() async {
