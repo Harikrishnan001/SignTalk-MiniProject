@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '/screens/dashboard_screen.dart';
+import 'package:sign_talk/screens/dashboardscreen/dashboard_screen.dart';
 import '/global/variables.dart';
 import '/screens/live_screen.dart';
 
