@@ -1,9 +1,8 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:camera/camera.dart';
 import '/screens/dashboard_screen.dart';
 import '/global/variables.dart';
-import '/screens/live_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,8 +17,15 @@ class SignTalkApplication extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        scrollbarTheme: ScrollbarThemeData(
+          thumbVisibility: MaterialStateProperty.all(true),
+          radius: const Radius.circular(3.0),
+          thickness: MaterialStateProperty.all(6.0),
+        ),
+      ),
       home: DashBoardScreen(),
     );
   }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:sign_talk/global/variables.dart';
 
+import '../widgets/svg_button.dart';
+
 class LiveScreen extends StatefulWidget {
   const LiveScreen({Key? key}) : super(key: key);
 
@@ -13,6 +15,7 @@ class _LiveScreenState extends State<LiveScreen> {
   CameraController? _cameraController;
   bool _isExpanded = false;
   static const int _animDuration = 500;
+  static const String _svgLocation = "assets/images/vector";
 
   @override
   void initState() {
@@ -84,6 +87,79 @@ class _LiveScreenState extends State<LiveScreen> {
               topRight: Radius.circular(30.0),
             ),
           ),
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return SizedBox(
+                height: constraints.maxHeight,
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: constraints.maxHeight - 60,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0, vertical: 15.0),
+                        child: NotificationListener<
+                            OverscrollIndicatorNotification>(
+                          onNotification: (overscroll) {
+                            overscroll.disallowIndicator();
+                            return true;
+                          },
+                          child: Scrollbar(
+                            scrollbarOrientation: ScrollbarOrientation.left,
+                            child: ListView(
+                              children: const [
+                                MessageText(message: 'Hello'),
+                                MessageText(message: 'How are you?'),
+                                MessageText(message: 'I am fine'),
+                                MessageText(message: 'What is your age?'),
+                                MessageText(message: 'I am 12 years old'),
+                                MessageText(message: 'Hello'),
+                                MessageText(message: 'How are you?'),
+                                MessageText(message: 'I am fine'),
+                                MessageText(message: 'What is your age?'),
+                                MessageText(message: 'I am 12 years old'),
+                                MessageText(message: 'Hello'),
+                                MessageText(message: 'How are you?'),
+                                MessageText(message: 'I am fine'),
+                                MessageText(message: 'What is your age?'),
+                                MessageText(message: 'I am 12 years old'),
+                                MessageText(message: 'Hello'),
+                                MessageText(message: 'How are you?'),
+                                MessageText(message: 'I am fine'),
+                                MessageText(message: 'What is your age?'),
+                                MessageText(message: 'I am 12 years old'),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          SvgButton(
+                            imageURL: "$_svgLocation/ionic-ios-browsers.svg",
+                            onPressed: () {},
+                          ),
+                          SvgButton(
+                            imageURL: '$_svgLocation/ios-volume-on.svg',
+                            onPressed: () {},
+                          ),
+                          SvgButton(
+                            imageURL: '$_svgLocation/feather-share.svg',
+                            onPressed: () {},
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ],
     );
@@ -107,6 +183,27 @@ class _LiveScreenState extends State<LiveScreen> {
             },
           ),
         ),
+      ),
+    );
+  }
+}
+
+class MessageText extends StatelessWidget {
+  final String message;
+
+  const MessageText({
+    required this.message,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6.0),
+      child: Text(
+        message,
+        textAlign: TextAlign.center,
+        style: const TextStyle(fontSize: 22.0, color: Colors.grey),
       ),
     );
   }
