@@ -65,6 +65,7 @@ flutter:
     - assets/images/vector/
     - assets/images/raster/
     - assets/fonts/
+    - assets/images/
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
