@@ -29,7 +29,7 @@ class SignTalkApplication extends StatelessWidget {
           thickness: MaterialStateProperty.all(6.0),
         ),
       ),
-      home: LoginScreen(),
+      home:DashBoardScreen(),
       // home: DashBoardScreen(),
     );
   }

@@ -68,40 +68,58 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("My Profile"),
+        backgroundColor: Color.fromARGB(255, 248, 248, 248),
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.navigate_before, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 60),
+          child: Text(
+            "My Profile",
+            style: TextStyle(color: Colors.black),
+          ),
+        ),
+       // actions: [IconButton(onPressed: (){}, icon: Icon(Icons.))],
       ),
       body: Center(
         child: Column(
           children: [
-            SizedBox(
-              height: 200,
-              width: 200,
-              child: Stack(children: [
-                CircleAvatar(
-                  // backgroundColor: Colors.white10,
-                  radius: 100,
-                  backgroundImage: _imageURL != null
-                      ? FileImage(File(_imageURL!)) as ImageProvider
-                      : AssetImage('assets/images/raster/Vector.png'),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 120, left: 150),
-                  child: IconButton(
-                    onPressed: () {
-                      _pickImage();
-                    },
-                    icon: CircleAvatar(
-                      child: Icon(
-                        Icons.camera_alt,
-                        color: Colors.black,
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SizedBox(
+                height: 200,
+                width: 200,
+                child: Stack(children: [
+                  CircleAvatar(
+                    // backgroundColor: Colors.white10,
+                    radius: 100,
+                    backgroundImage: _imageURL != null
+                        ? FileImage(File(_imageURL!)) as ImageProvider
+                        : AssetImage('assets/images/raster/Vector.png'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 120, left: 150),
+                    child: IconButton(
+                      onPressed: () {
+                        _pickImage();
+                      },
+                      icon: CircleAvatar(
+                        child: Icon(
+                          Icons.camera_alt,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ]),
+                ]),
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.only(bottom: 20, left: 30),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -112,7 +130,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             controller: _usernameController,
                           ),
                         )
-                      : Text(_getString() ?? "Name"),
+                      : Text(
+                          _getString() ?? "Name",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
                   IconButton(
                       onPressed: _onEditPressed,
                       icon: _editMode
@@ -121,61 +143,104 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TweenAnimationBuilder(
-                tween: Tween(begin: 0.0, end: 0.3),
-                duration: Duration(seconds: 4),
-                builder: (context, double value, _) => Container(
-                  height: 20,
-                  width: 300,
-                  margin: EdgeInsets.symmetric(vertical: 20),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    child: LinearProgressIndicator(
-                      value: value,
-                      color: STFontColor.primaryColor,
-                      backgroundColor: Color.fromARGB(255, 218, 218, 218),
-                    ),
-                  ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 35),
+                  child: Text('Assignments Completed'),
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 105),
+                  child: Text('2/4'),
+                )
+              ],
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: TweenAnimationBuilder(
-                tween: Tween(begin: 0.0, end: 0.3),
-                duration: Duration(seconds: 4),
-                builder: (context, double value, _) => Container(
-                  height: 20,
-                  width: 300,
-                  margin: EdgeInsets.symmetric(vertical: 20),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    child: LinearProgressIndicator(
-                      value: value,
-                      color: STFontColor.primaryColor,
-                      backgroundColor: Color.fromARGB(255, 218, 218, 218),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(bottom: 8.0),
               child: TweenAnimationBuilder(
                 tween: Tween(begin: 0.0, end: 0.5),
                 duration: Duration(seconds: 4),
-                builder: (context, double value, _) => SizedBox(
-                  height: 120,
-                  width: 120,
-                  child: CircularProgressIndicator(
-                    value: value,
-                    color: STFontColor.primaryColor,
-                    backgroundColor: Color.fromARGB(255, 218, 218, 218),
-                    strokeWidth: 20,
+                builder: (context, double value, _) => Container(
+                  height: 20,
+                  width: 300,
+                  margin: EdgeInsets.symmetric(vertical: 20),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    child: LinearProgressIndicator(
+                      value: value,
+                      color: STFontColor.primaryColor,
+                      backgroundColor: Color.fromARGB(255, 218, 218, 218),
+                    ),
                   ),
                 ),
+              ),
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 35),
+                  child: Text('Total Signs Learned'),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 120),
+                  child: Text('25/50'),
+                )
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: TweenAnimationBuilder(
+                tween: Tween(begin: 0.0, end: 0.5),
+                duration: Duration(seconds: 4),
+                builder: (context, double value, _) => Container(
+                  height: 20,
+                  width: 300,
+                  margin: EdgeInsets.symmetric(vertical: 20),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    child: LinearProgressIndicator(
+                      value: value,
+                      color: STFontColor.primaryColor,
+                      backgroundColor: Color.fromARGB(255, 218, 218, 218),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TweenAnimationBuilder(
+                      tween: Tween(begin: 0.0, end: 0.75),
+                      duration: Duration(seconds: 4),
+                      builder: (context, double value, _) => Stack(alignment: Alignment.center,
+                        children:[ SizedBox(
+                          height: 120,
+                          width: 120,
+                          child: CircularProgressIndicator(
+                            value: value,
+                            color: STFontColor.primaryColor,
+                            backgroundColor: Color.fromARGB(255, 218, 218, 218),
+                            strokeWidth: 20,
+                          ),
+                        ),Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text('75%'),
+                        )],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 50),
+                    child: Text(
+                      'Learning\n Progress',
+                      style: TextStyle(fontSize: 23),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],

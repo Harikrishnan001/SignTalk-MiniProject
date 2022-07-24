@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:sign_talk/screens/live_screen.dart';
+import 'package:sign_talk/screens/login_screen.dart';
 import '../../global/colors.dart';
 import 'option.dart';
 
@@ -20,7 +21,6 @@ class DashBoardScreen extends StatelessWidget {
       allowedExtensions: ['jpg'],
     );
     print('THE PATH IS ${result!.files[0].path}');
-    
   }
 
   @override
@@ -54,11 +54,13 @@ class DashBoardScreen extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: GestureDetector(
               onTap: () {
-                print("Naveen");
+                  Navigator.push(
+          context, MaterialPageRoute(builder: (context) => LoginScreen()));
               },
               child: CircleAvatar(
                 child: ClipOval(
-                    child: Image.asset('assets/images/raster/new.jpg')),
+                  child: Image.asset('assets/images/raster/Vector.png'),
+                ),
                 backgroundColor: Colors.black,
               ),
             ),
